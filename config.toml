@@ -6,18 +6,4 @@ title = 'Hidku'
   description = "Sitio web personal de Hidku - Desarrollador y creador de contenido"
   author = "Hidku"
 
-[menu]
-  [[menu.main]]
-    name = "Home"
-    url = "/"
-    weight = 1
-  
-  [[menu.main]]
-    name = "Post"
-    url = "/post/"
-    weight = 2
-  
-  [[menu.main]]
-    name = "Contact"
-    url = "/contact/"
-    weight = 3
+# Menú personalizado manejado en el template baseof.html
