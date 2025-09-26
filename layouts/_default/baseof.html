@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ if .Title }}{{ .Title }} - {{ end }}{{ .Site.Title }}</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <nav class="floating-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="/">{{ .Site.Title }}</a>
+            </div>
+            <div class="nav-menu">
+                <a href="/" class="nav-link {{ if eq .RelPermalink "/" }}active{{ end }}">
+                    <span class="nav-icon">🏠</span>
+                    Home
+                </a>
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-link dropdown-toggle {{ if hasPrefix .RelPermalink "/post" }}active{{ end }}">
+                        <span class="nav-icon">📸</span>
+                        Post
+                        <span class="dropdown-arrow">▼</span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="/post/" class="dropdown-item {{ if eq .RelPermalink "/post/" }}active{{ end }}">
+                            <span class="nav-icon">🖼️</span>
+                            Images
+                        </a>
+                    </div>
+                </div>
+                <a href="/contact/" class="nav-link {{ if eq .RelPermalink "/contact/" }}active{{ end }}">
+                    <span class="nav-icon">📧</span>
+                    Contact
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    
+    <main class="main-content">
+        {{ block "main" . }}{{ end }}
+    </main>
+
+    
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-body">
+                <img id="modalImage" src="" alt="">
+                <div class="modal-info">
+                    <h2 id="modalTitle"></h2>
+                    <p id="modalDescription"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>

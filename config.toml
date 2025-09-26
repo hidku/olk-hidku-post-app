@@ -1,1 +1,23 @@
+baseURL = 'https://yourusername.github.io/olk-hidku-post-app/'
+languageCode = 'es'
 title = 'Hidku'
+
+[params]
+  description = "Sitio web personal de Hidku - Desarrollador y creador de contenido"
+  author = "Hidku"
+
+[menu]
+  [[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+  
+  [[menu.main]]
+    name = "Post"
+    url = "/post/"
+    weight = 2
+  
+  [[menu.main]]
+    name = "Contact"
+    url = "/contact/"
+    weight = 3
