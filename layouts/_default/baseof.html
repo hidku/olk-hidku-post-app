@@ -32,6 +32,35 @@
                         </a>
                     </div>
                 </div>
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">
+                        <span class="nav-icon">📚</span>
+                        Playbook
+                        <span class="dropdown-arrow">▼</span>
+                    </a>
+                    <div class="dropdown-menu playbook-menu">
+                        <a href="https://cloud.hidku.com/" class="dropdown-item" target="_blank">
+                            <span class="nav-icon">☁️</span>
+                            Cloud
+                        </a>
+                        <a href="https://platform.hidku.com/" class="dropdown-item" target="_blank">
+                            <span class="nav-icon">🔧</span>
+                            Platform
+                        </a>
+                        <a href="https://ai.hidku.com/" class="dropdown-item playbook-center" target="_blank">
+                            <span class="nav-icon">🤖</span>
+                            AI
+                        </a>
+                        <a href="https://security.hidku.com/" class="dropdown-item" target="_blank">
+                            <span class="nav-icon">🔒</span>
+                            Security
+                        </a>
+                        <a href="https://engine.hidku.com/" class="dropdown-item" target="_blank">
+                            <span class="nav-icon">⚙️</span>
+                            Engine
+                        </a>
+                    </div>
+                </div>
                 <a href="{{ .Site.BaseURL }}contact/" class="nav-link {{ if eq .RelPermalink "/contact/" }}active{{ end }}">
                     <span class="nav-icon">📧</span>
                     Contact
