@@ -1,30 +1,54 @@
 {{ define "main" }}
-<section class="post-section">
+<section class="gallery-section">
     <div class="container">
-        <h1>{{ .Title }}</h1>
-        
-        {{ if .Content }}
-        <div class="content">
-            {{ .Content }}
+        <div class="gallery-header">
+            <h1>{{ .Title }}</h1>
+            {{ if .Content }}
+            <div class="gallery-description">
+                {{ .Content }}
+            </div>
+            {{ end }}
         </div>
-        {{ end }}
         
         <div class="projects-grid">
             {{ range .Pages }}
-            <div class="project-card">
+            <div class="project-card" data-category="{{ if .Params.category }}{{ .Params.category }}{{ else }}general{{ end }}">
                 <div class="project-image">
                     {{ if .Params.image }}
                     <img src="{{ .Params.image }}" alt="{{ .Title }}" loading="lazy">
                     {{ else }}
                     <div class="project-placeholder">
-                        <span class="placeholder-icon">📸</span>
+                        <div class="placeholder-content">
+                            <span class="placeholder-icon">🚀</span>
+                            <span class="placeholder-text">{{ .Title }}</span>
+                        </div>
                     </div>
                     {{ end }}
+                    <div class="project-overlay">
+                        <div class="project-actions">
+                            <a href="{{ .RelPermalink }}" class="btn-view">Ver Detalles</a>
+                            {{ if .Params.demo }}
+                            <a href="{{ .Params.demo }}" class="btn-demo" target="_blank">Demo</a>
+                            {{ end }}
+                        </div>
+                    </div>
                 </div>
                 <div class="project-content">
-                    <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+                    <div class="project-header">
+                        <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+                        {{ if .Params.status }}
+                        <span class="project-status status-{{ .Params.status }}">{{ .Params.status }}</span>
+                        {{ end }}
+                    </div>
                     {{ if .Summary }}
-                    <p>{{ .Summary }}</p>
+                    <p class="project-summary">{{ .Summary }}</p>
+                    {{ end }}
+                    {{ if .Params.technologies }}
+                    <div class="project-tech">
+                        {{ range .Params.technologies }}
+                        <span class="tech-tag">{{ . }}</span>
+                        {{ end }}
+                    </div>
                     {{ end }}
                     <div class="project-meta">
                         <span class="date">{{ .Date.Format "2 January 2006" }}</span>
@@ -40,6 +64,16 @@
             </div>
             {{ end }}
         </div>
+        
+        {{ if not .Pages }}
+        <div class="empty-gallery">
+            <div class="empty-content">
+                <span class="empty-icon">📁</span>
+                <h3>No hay proyectos disponibles</h3>
+                <p>Los proyectos se mostrarán aquí cuando estén disponibles.</p>
+            </div>
+        </div>
+        {{ end }}
     </div>
 </section>
 {{ end }}
