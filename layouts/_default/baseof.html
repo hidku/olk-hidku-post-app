@@ -50,10 +50,31 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <div class="modal-body">
-                <img id="modalImage" src="" alt="">
+                <div class="modal-image-container">
+                    <img id="modalImage" src="" alt="">
+                </div>
                 <div class="modal-info">
-                    <h2 id="modalTitle"></h2>
-                    <p id="modalDescription"></p>
+                    <div class="modal-header">
+                        <h2 id="modalTitle"></h2>
+                        <div class="modal-meta">
+                            <span id="modalDate" class="modal-date"></span>
+                            <span id="modalStatus" class="modal-status"></span>
+                        </div>
+                    </div>
+                    <div class="modal-description">
+                        <p id="modalDescription"></p>
+                    </div>
+                    <div class="modal-technologies">
+                        <h4>Tecnologías:</h4>
+                        <div id="modalTech" class="tech-list"></div>
+                    </div>
+                    <div class="modal-tags">
+                        <h4>Tags:</h4>
+                        <div id="modalTags" class="tags-list"></div>
+                    </div>
+                    <div class="modal-actions">
+                        <a id="modalDemo" href="#" class="btn-demo" target="_blank" style="display: none;">Ver Demo</a>
+                    </div>
                 </div>
             </div>
         </div>

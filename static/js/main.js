@@ -8,19 +8,74 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalDescription = document.getElementById('modalDescription');
     const closeBtn = document.querySelector('.close');
     
-    // Abrir modal cuando se hace clic en una imagen
+    // Abrir modal cuando se hace clic en una imagen de la galería
     document.addEventListener('click', function(e) {
-        if (e.target.tagName === 'IMG' && e.target.closest('.project-item')) {
-            const projectItem = e.target.closest('.project-item');
-            const title = projectItem.querySelector('h3')?.textContent || 'Proyecto';
-            const description = projectItem.querySelector('p')?.textContent || 'Descripción del proyecto';
+        if (e.target.closest('.gallery-item')) {
+            const galleryItem = e.target.closest('.gallery-item');
+            const img = galleryItem.querySelector('img');
             
-            modalImg.src = e.target.src;
-            modalImg.alt = e.target.alt;
-            modalTitle.textContent = title;
-            modalDescription.textContent = description;
-            modal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
+            if (img) {
+                // Obtener datos del elemento
+                const title = galleryItem.dataset.title || 'Proyecto';
+                const date = galleryItem.dataset.date || '';
+                const description = galleryItem.dataset.description || 'Descripción del proyecto';
+                const technologies = galleryItem.dataset.technologies || '';
+                const tags = galleryItem.dataset.tags || '';
+                const demo = galleryItem.dataset.demo || '';
+                const status = galleryItem.dataset.status || '';
+                
+                // Configurar imagen
+                modalImg.src = img.src;
+                modalImg.alt = img.alt;
+                
+                // Configurar información
+                document.getElementById('modalTitle').textContent = title;
+                document.getElementById('modalDate').textContent = date;
+                document.getElementById('modalDescription').textContent = description;
+                
+                // Configurar tecnologías
+                const techContainer = document.getElementById('modalTech');
+                if (technologies) {
+                    techContainer.innerHTML = technologies.split(', ').map(tech => 
+                        `<span>${tech}</span>`
+                    ).join('');
+                } else {
+                    techContainer.innerHTML = '<span>No especificadas</span>';
+                }
+                
+                // Configurar tags
+                const tagsContainer = document.getElementById('modalTags');
+                if (tags) {
+                    tagsContainer.innerHTML = tags.split(', ').map(tag => 
+                        `<span>${tag}</span>`
+                    ).join('');
+                } else {
+                    tagsContainer.innerHTML = '<span>Sin tags</span>';
+                }
+                
+                // Configurar status
+                const statusElement = document.getElementById('modalStatus');
+                if (status) {
+                    statusElement.textContent = status;
+                    statusElement.className = `modal-status status-${status}`;
+                    statusElement.style.display = 'inline-block';
+                } else {
+                    statusElement.style.display = 'none';
+                }
+                
+                // Configurar demo
+                const demoLink = document.getElementById('modalDemo');
+                if (demo) {
+                    demoLink.href = demo;
+                    demoLink.style.display = 'inline-block';
+                } else {
+                    demoLink.style.display = 'none';
+                }
+                
+                // Mostrar modal
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
         }
     });
     

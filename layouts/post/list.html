@@ -10,55 +10,28 @@
             {{ end }}
         </div>
         
-        <div class="projects-grid">
+        <div class="image-gallery">
             {{ range .Pages }}
-            <div class="project-card" data-category="{{ if .Params.category }}{{ .Params.category }}{{ else }}general{{ end }}">
-                <div class="project-image">
-                    {{ if .Params.image }}
-                    <img src="{{ .Params.image }}" alt="{{ .Title }}" loading="lazy">
-                    {{ else }}
-                    <div class="project-placeholder">
-                        <div class="placeholder-content">
-                            <span class="placeholder-icon">🚀</span>
-                            <span class="placeholder-text">{{ .Title }}</span>
-                        </div>
-                    </div>
-                    {{ end }}
-                    <div class="project-overlay">
-                        <div class="project-actions">
-                            <a href="{{ .RelPermalink }}" class="btn-view">Ver Detalles</a>
-                            {{ if .Params.demo }}
-                            <a href="{{ .Params.demo }}" class="btn-demo" target="_blank">Demo</a>
-                            {{ end }}
-                        </div>
-                    </div>
+            <div class="gallery-item" 
+                 data-title="{{ .Title }}"
+                 data-date="{{ .Date.Format "2 January 2006" }}"
+                 data-description="{{ .Summary }}"
+                 data-technologies="{{ if .Params.technologies }}{{ delimit .Params.technologies ", " }}{{ end }}"
+                 data-tags="{{ if .Params.tags }}{{ delimit .Params.tags ", " }}{{ end }}"
+                 data-demo="{{ if .Params.demo }}{{ .Params.demo }}{{ end }}"
+                 data-status="{{ if .Params.status }}{{ .Params.status }}{{ end }}">
+                {{ if .Params.image }}
+                <img src="{{ .Params.image }}" alt="{{ .Title }}" loading="lazy">
+                {{ else }}
+                <div class="image-placeholder">
+                    <span class="placeholder-icon">🚀</span>
+                    <span class="placeholder-text">{{ .Title }}</span>
                 </div>
-                <div class="project-content">
-                    <div class="project-header">
-                        <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
-                        {{ if .Params.status }}
-                        <span class="project-status status-{{ .Params.status }}">{{ .Params.status }}</span>
-                        {{ end }}
-                    </div>
-                    {{ if .Summary }}
-                    <p class="project-summary">{{ .Summary }}</p>
-                    {{ end }}
-                    {{ if .Params.technologies }}
-                    <div class="project-tech">
-                        {{ range .Params.technologies }}
-                        <span class="tech-tag">{{ . }}</span>
-                        {{ end }}
-                    </div>
-                    {{ end }}
-                    <div class="project-meta">
-                        <span class="date">{{ .Date.Format "2 January 2006" }}</span>
-                        {{ if .Params.tags }}
-                        <div class="tags">
-                            {{ range .Params.tags }}
-                            <span class="tag">{{ . }}</span>
-                            {{ end }}
-                        </div>
-                        {{ end }}
+                {{ end }}
+                <div class="image-overlay">
+                    <div class="overlay-content">
+                        <h3>{{ .Title }}</h3>
+                        <p>{{ .Date.Format "2 January 2006" }}</p>
                     </div>
                 </div>
             </div>
