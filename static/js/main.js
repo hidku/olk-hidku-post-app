@@ -137,29 +137,7 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
     
-    // Efecto parallax suave en el scroll
-    let ticking = false;
-    
-    function updateParallax() {
-        const scrolled = window.pageYOffset;
-        const parallax = document.querySelector('.floating-nav');
-        
-        if (parallax) {
-            const speed = scrolled * 0.1;
-            parallax.style.transform = `translateX(-50%) translateY(${speed}px)`;
-        }
-        
-        ticking = false;
-    }
-    
-    function requestTick() {
-        if (!ticking) {
-            requestAnimationFrame(updateParallax);
-            ticking = true;
-        }
-    }
-    
-    window.addEventListener('scroll', requestTick);
+    // Efecto parallax removido para mantener navbar fija
     
     // Efecto hover mejorado para enlaces de navegación
     document.querySelectorAll('.nav-link').forEach(link => {
@@ -190,23 +168,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Mostrar/ocultar navegación en scroll
-    let lastScrollTop = 0;
-    const nav = document.querySelector('.floating-nav');
-    
-    window.addEventListener('scroll', function() {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        
-        if (scrollTop > lastScrollTop && scrollTop > 100) {
-            // Scrolling down
-            nav.style.transform = 'translateX(-50%) translateY(-100px)';
-        } else {
-            // Scrolling up
-            nav.style.transform = 'translateX(-50%) translateY(0)';
-        }
-        
-        lastScrollTop = scrollTop;
-    });
+    // Navegación fija - sin efectos de scroll
     
     // Efecto de typing para el título principal
     const titleElement = document.querySelector('.home-section h1');
