@@ -1,27 +1,39 @@
 ---
-title: "Bienvenido a mi sitio"
+title: "Hidku - Desarrollador Full-Stack"
 date: 2024-01-01
 draft: false
 ---
 
-## ¡Hola! Soy Hidku 👋
+## 🚀 Desarrollador Full-Stack
 
-Soy un desarrollador apasionado por la tecnología y la creación de contenido digital. Me especializo en desarrollo web, aplicaciones móviles y diseño de experiencias de usuario.
+Soy un desarrollador apasionado por crear experiencias digitales excepcionales. Me especializo en tecnologías modernas y soluciones innovadoras que marcan la diferencia.
 
-### ¿Qué hago?
+### 💻 Tecnologías Principales
 
-- **Desarrollo Web**: Creo sitios web modernos y responsivos usando las últimas tecnologías
-- **Aplicaciones Móviles**: Desarrollo apps nativas e híbridas para iOS y Android
-- **Diseño UX/UI**: Me enfoco en crear experiencias intuitivas y atractivas
-- **Contenido Digital**: Produzco contenido técnico y tutoriales
+- **Frontend**: React, Vue.js, TypeScript, Next.js
+- **Backend**: Node.js, Python, Go, Rust
+- **Mobile**: React Native, Flutter
+- **Cloud**: AWS, Google Cloud, Azure, Docker
+- **AI/ML**: TensorFlow, PyTorch, OpenAI
 
-### Mis intereses
+### 🎯 Especialidades
 
-Me apasiona aprender nuevas tecnologías, compartir conocimiento y crear proyectos que impacten positivamente en la vida de las personas. Siempre estoy explorando nuevas formas de combinar tecnología y creatividad.
+- Desarrollo de aplicaciones web escalables
+- Arquitecturas de microservicios
+- Integración de IA y machine learning
+- Optimización de rendimiento
+- DevOps y automatización
 
-### Conecta conmigo
+### 🌟 ¿Por qué trabajar conmigo?
 
-No dudes en explorar mi galería de proyectos y contactarme si tienes alguna pregunta o idea en la que podamos colaborar.
+- **Experiencia**: 5+ años desarrollando soluciones complejas
+- **Innovación**: Siempre al día con las últimas tecnologías
+- **Calidad**: Código limpio, documentado y mantenible
+- **Colaboración**: Trabajo en equipo y comunicación efectiva
+
+### 🚀 Proyectos Destacados
+
+Explora mi galería para ver algunos de mis trabajos más innovadores y creativos. Cada proyecto representa un desafío único y una solución elegante.
 
 ---
 
