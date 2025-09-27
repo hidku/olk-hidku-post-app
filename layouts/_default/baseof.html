@@ -12,10 +12,10 @@
     <nav class="floating-nav">
         <div class="nav-container">
             <div class="nav-brand">
-                <a href="/">{{ .Site.Title }}</a>
+                <a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
             </div>
             <div class="nav-menu">
-                <a href="/" class="nav-link {{ if eq .RelPermalink "/" }}active{{ end }}">
+                <a href="{{ .Site.BaseURL }}" class="nav-link {{ if eq .RelPermalink "/" }}active{{ end }}">
                     <span class="nav-icon">🏠</span>
                     Home
                 </a>
@@ -26,13 +26,13 @@
                         <span class="dropdown-arrow">▼</span>
                     </a>
                     <div class="dropdown-menu">
-                        <a href="/post/" class="dropdown-item {{ if eq .RelPermalink "/post/" }}active{{ end }}">
+                        <a href="{{ .Site.BaseURL }}post/" class="dropdown-item {{ if eq .RelPermalink "/post/" }}active{{ end }}">
                             <span class="nav-icon">🖼️</span>
                             Images
                         </a>
                     </div>
                 </div>
-                <a href="/contact/" class="nav-link {{ if eq .RelPermalink "/contact/" }}active{{ end }}">
+                <a href="{{ .Site.BaseURL }}contact/" class="nav-link {{ if eq .RelPermalink "/contact/" }}active{{ end }}">
                     <span class="nav-icon">📧</span>
                     Contact
                 </a>
