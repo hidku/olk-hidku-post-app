@@ -179,20 +179,32 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(typeWriter, 500);
     }
     
-    // Forzar navbar completamente fija
+    // Forzar navbar completamente fija y centrada
     const navbar = document.querySelector('.floating-nav');
     if (navbar) {
-        // Resetear cualquier transformación
+        // Resetear cualquier transformación y centrar
         navbar.style.position = 'fixed';
         navbar.style.top = '20px';
         navbar.style.left = '50%';
         navbar.style.transform = 'translateX(-50%)';
         navbar.style.zIndex = '9999';
+        navbar.style.display = 'flex';
+        navbar.style.justifyContent = 'center';
+        navbar.style.alignItems = 'center';
         
-        // Prevenir cualquier cambio en scroll
+        // Prevenir cualquier cambio en scroll y mantener centrado
         window.addEventListener('scroll', function() {
             navbar.style.position = 'fixed';
             navbar.style.top = '20px';
+            navbar.style.left = '50%';
+            navbar.style.transform = 'translateX(-50%)';
+            navbar.style.display = 'flex';
+            navbar.style.justifyContent = 'center';
+            navbar.style.alignItems = 'center';
+        });
+        
+        // Asegurar centrado en resize
+        window.addEventListener('resize', function() {
             navbar.style.left = '50%';
             navbar.style.transform = 'translateX(-50%)';
         });
