@@ -216,13 +216,17 @@ body {
 }
 
 .home-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.home-top {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 60px;
     align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+    margin-bottom: 60px;
 }
 
 .home-left {
@@ -231,6 +235,13 @@ body {
 
 .home-right {
     animation: fadeInRight 1s ease-out 0.2s both;
+}
+
+.home-bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
 }
 
 .home-header {
@@ -300,15 +311,8 @@ body {
 }
 
 /* Sección de perfil */
-.profile-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 30px;
-}
-
 .profile-header {
+    text-align: center;
     animation: fadeInDown 1s ease-out 0.3s both;
 }
 
@@ -1347,7 +1351,13 @@ body {
     }
     
     /* Home responsive */
-    .home-container {
+    .home-top {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+    
+    .home-bottom {
         grid-template-columns: 1fr;
         gap: 40px;
         text-align: center;
