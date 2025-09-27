@@ -1,0 +1,45 @@
+{{ define "main" }}
+<section class="post-section">
+    <div class="container">
+        <h1>{{ .Title }}</h1>
+        
+        {{ if .Content }}
+        <div class="content">
+            {{ .Content }}
+        </div>
+        {{ end }}
+        
+        <div class="projects-grid">
+            {{ range .Pages }}
+            <div class="project-card">
+                <div class="project-image">
+                    {{ if .Params.image }}
+                    <img src="{{ .Params.image }}" alt="{{ .Title }}" loading="lazy">
+                    {{ else }}
+                    <div class="project-placeholder">
+                        <span class="placeholder-icon">📸</span>
+                    </div>
+                    {{ end }}
+                </div>
+                <div class="project-content">
+                    <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+                    {{ if .Summary }}
+                    <p>{{ .Summary }}</p>
+                    {{ end }}
+                    <div class="project-meta">
+                        <span class="date">{{ .Date.Format "2 January 2006" }}</span>
+                        {{ if .Params.tags }}
+                        <div class="tags">
+                            {{ range .Params.tags }}
+                            <span class="tag">{{ . }}</span>
+                            {{ end }}
+                        </div>
+                        {{ end }}
+                    </div>
+                </div>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+</section>
+{{ end }}
