@@ -25,7 +25,7 @@ body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
     color: #ffffff;
-    background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
     min-height: 100vh;
     overflow-x: hidden;
 }
@@ -36,13 +36,13 @@ body {
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(20, 20, 20, 0.95);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(20, 20, 20, 0.8);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(59, 130, 246, 0.3);
     border-radius: 25px;
     padding: 8px 20px;
     z-index: 1000;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
     transition: all 0.3s ease;
 }
 
@@ -55,13 +55,13 @@ body {
 .nav-brand a {
     font-size: 1.2rem;
     font-weight: 700;
-    color: #9146ff;
+    color: #3b82f6;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .nav-brand a:hover {
-    color: #a855f7;
+    color: #60a5fa;
 }
 
 .nav-menu {
@@ -84,15 +84,15 @@ body {
 }
 
 .nav-link:hover {
-    background: rgba(145, 70, 255, 0.2);
-    color: #a855f7;
+    background: rgba(59, 130, 246, 0.2);
+    color: #60a5fa;
     transform: translateY(-2px);
 }
 
 .nav-link.active {
-    background: linear-gradient(135deg, #9146ff, #a855f7);
+    background: linear-gradient(135deg, #3b82f6, #60a5fa);
     color: #ffffff;
-    box-shadow: 0 4px 15px rgba(145, 70, 255, 0.4);
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
 }
 
 .nav-icon {
@@ -152,8 +152,8 @@ body {
 }
 
 .dropdown-item:hover {
-    background: rgba(145, 70, 255, 0.2);
-    color: #a855f7;
+    background: rgba(59, 130, 246, 0.2);
+    color: #60a5fa;
 }
 
 /* Contenido principal */
@@ -172,7 +172,7 @@ body {
 .home-section h1 {
     font-size: 3.5rem;
     font-weight: 700;
-    background: linear-gradient(135deg, #9146ff, #a855f7, #ec4899);
+    background: linear-gradient(135deg, #3b82f6, #60a5fa, #93c5fd);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -203,7 +203,7 @@ body {
 
 .home-content h3 {
     font-size: 1.5rem;
-    color: #a855f7;
+    color: #60a5fa;
     margin: 25px 0 15px;
     font-weight: 600;
 }
@@ -227,14 +227,14 @@ body {
 }
 
 .home-content li strong {
-    color: #a855f7;
+    color: #60a5fa;
     font-weight: 600;
 }
 
 .home-content hr {
     border: none;
     height: 1px;
-    background: linear-gradient(90deg, transparent, #9146ff, transparent);
+    background: linear-gradient(90deg, transparent, #3b82f6, transparent);
     margin: 40px 0;
 }
 
@@ -265,7 +265,7 @@ body {
 
 .contact-content h2 {
     font-size: 1.8rem;
-    color: #a855f7;
+    color: #60a5fa;
     margin: 25px 0 15px;
     font-weight: 600;
 }
@@ -296,13 +296,13 @@ body {
 }
 
 .contact-content a {
-    color: #a855f7;
+    color: #60a5fa;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .contact-content a:hover {
-    color: #9146ff;
+    color: #3b82f6;
 }
 
 /* Modal mejorado para imágenes */
@@ -354,7 +354,7 @@ body {
 }
 
 .close:hover {
-    color: #a855f7;
+    color: #60a5fa;
     background: rgba(145, 70, 255, 0.2);
     transform: scale(1.1);
 }
@@ -407,7 +407,7 @@ body {
     margin: 0 0 15px;
     font-size: 2rem;
     font-weight: 700;
-    background: linear-gradient(135deg, #9146ff, #a855f7);
+    background: linear-gradient(135deg, #3b82f6, #60a5fa);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -470,7 +470,7 @@ body {
 
 .modal-technologies h4,
 .modal-tags h4 {
-    color: #a855f7;
+    color: #60a5fa;
     margin: 0 0 15px;
     font-size: 1.1rem;
     font-weight: 600;
@@ -486,7 +486,7 @@ body {
 .tech-list span,
 .tags-list span {
     background: rgba(145, 70, 255, 0.2);
-    color: #a855f7;
+    color: #60a5fa;
     padding: 8px 16px;
     border-radius: 20px;
     font-size: 0.9rem;
@@ -502,7 +502,7 @@ body {
 
 .btn-demo {
     display: inline-block;
-    background: linear-gradient(135deg, #9146ff, #a855f7);
+    background: linear-gradient(135deg, #3b82f6, #60a5fa);
     color: #ffffff;
     padding: 12px 30px;
     border-radius: 25px;
@@ -513,7 +513,7 @@ body {
 }
 
 .btn-demo:hover {
-    background: linear-gradient(135deg, #a855f7, #ec4899);
+    background: linear-gradient(135deg, #60a5fa, #93c5fd);
     transform: translateY(-2px);
     box-shadow: 0 10px 30px rgba(145, 70, 255, 0.4);
 }
@@ -576,12 +576,12 @@ body {
 }
 
 .content h2 {
-    color: #a855f7;
+    color: #60a5fa;
     font-size: 1.8rem;
 }
 
 .content h3 {
-    color: #a855f7;
+    color: #60a5fa;
     font-size: 1.5rem;
 }
 
@@ -600,18 +600,18 @@ body {
 }
 
 .content strong {
-    color: #a855f7;
+    color: #60a5fa;
     font-weight: 600;
 }
 
 .content a {
-    color: #a855f7;
+    color: #60a5fa;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .content a:hover {
-    color: #9146ff;
+    color: #3b82f6;
 }
 
 /* Galería mejorada */
@@ -628,7 +628,7 @@ body {
 .gallery-header h1 {
     font-size: 3rem;
     font-weight: 700;
-    background: linear-gradient(135deg, #9146ff, #a855f7, #ec4899);
+    background: linear-gradient(135deg, #3b82f6, #60a5fa, #93c5fd);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -683,7 +683,7 @@ body {
 .image-placeholder {
     width: 100%;
     height: 250px;
-    background: linear-gradient(135deg, #9146ff, #a855f7, #ec4899);
+    background: linear-gradient(135deg, #3b82f6, #60a5fa, #93c5fd);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -789,7 +789,7 @@ body {
 .project-placeholder {
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #9146ff, #a855f7, #ec4899);
+    background: linear-gradient(135deg, #3b82f6, #60a5fa, #93c5fd);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -878,7 +878,7 @@ body {
 
 .btn-demo {
     background: rgba(255, 255, 255, 0.9);
-    color: #9146ff;
+    color: #3b82f6;
     border-color: rgba(255, 255, 255, 0.9);
 }
 
@@ -912,7 +912,7 @@ body {
 }
 
 .project-content h2 a:hover {
-    color: #a855f7;
+    color: #60a5fa;
 }
 
 .project-status {
@@ -955,7 +955,7 @@ body {
 
 .tech-tag {
     background: rgba(145, 70, 255, 0.15);
-    color: #a855f7;
+    color: #60a5fa;
     padding: 6px 12px;
     border-radius: 20px;
     font-size: 0.8rem;
@@ -989,7 +989,7 @@ body {
 
 .tag {
     background: rgba(145, 70, 255, 0.2);
-    color: #a855f7;
+    color: #60a5fa;
     padding: 4px 12px;
     border-radius: 15px;
     font-size: 0.8rem;
@@ -1070,7 +1070,7 @@ body {
 }
 
 .item-card h2 a:hover {
-    color: #a855f7;
+    color: #60a5fa;
 }
 
 .item-card p {

@@ -190,22 +190,23 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Mostrar/ocultar navegación en scroll
-    let lastScrollTop = 0;
+    // Mantener navegación fija al hacer scroll
     const nav = document.querySelector('.floating-nav');
     
     window.addEventListener('scroll', function() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         
-        if (scrollTop > lastScrollTop && scrollTop > 100) {
-            // Scrolling down
-            nav.style.transform = 'translateX(-50%) translateY(-100px)';
-        } else {
-            // Scrolling up
-            nav.style.transform = 'translateX(-50%) translateY(0)';
-        }
+        // Mantener la navegación siempre visible
+        nav.style.transform = 'translateX(-50%) translateY(0)';
         
-        lastScrollTop = scrollTop;
+        // Ajustar opacidad basada en el scroll
+        if (scrollTop > 50) {
+            nav.style.background = 'rgba(20, 20, 20, 0.9)';
+            nav.style.backdropFilter = 'blur(20px)';
+        } else {
+            nav.style.background = 'rgba(20, 20, 20, 0.8)';
+            nav.style.backdropFilter = 'blur(15px)';
+        }
     });
     
     // Efecto de typing para el título principal
