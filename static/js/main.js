@@ -139,16 +139,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Efecto parallax removido para mantener navbar fija
     
-    // Efecto hover mejorado para enlaces de navegación
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-2px) scale(1.05)';
-        });
-        
-        link.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
-        });
-    });
+    // Efectos hover removidos para mantener navbar fija
     
     // Cargar imágenes con lazy loading
     if ('IntersectionObserver' in window) {
@@ -186,6 +177,25 @@ document.addEventListener('DOMContentLoaded', function() {
         };
         
         setTimeout(typeWriter, 500);
+    }
+    
+    // Forzar navbar completamente fija
+    const navbar = document.querySelector('.floating-nav');
+    if (navbar) {
+        // Resetear cualquier transformación
+        navbar.style.position = 'fixed';
+        navbar.style.top = '20px';
+        navbar.style.left = '50%';
+        navbar.style.transform = 'translateX(-50%)';
+        navbar.style.zIndex = '9999';
+        
+        // Prevenir cualquier cambio en scroll
+        window.addEventListener('scroll', function() {
+            navbar.style.position = 'fixed';
+            navbar.style.top = '20px';
+            navbar.style.left = '50%';
+            navbar.style.transform = 'translateX(-50%)';
+        });
     }
     
     console.log('🚀 Hidku Portfolio - JavaScript cargado correctamente');

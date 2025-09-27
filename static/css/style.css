@@ -36,16 +36,38 @@ body {
     top: 20px !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
-    background: rgba(20, 20, 20, 0.8);
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 25px;
-    padding: 8px 20px;
-    z-index: 1000;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    background: rgba(20, 20, 20, 0.8) !important;
+    backdrop-filter: blur(15px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 25px !important;
+    padding: 8px 20px !important;
+    z-index: 9999 !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
     transition: none !important;
-    width: auto;
-    max-width: 90%;
+    width: auto !important;
+    max-width: 90% !important;
+    margin: 0 !important;
+    will-change: auto !important;
+}
+
+/* Forzar que la navbar NO se mueva */
+.floating-nav * {
+    transform: none !important;
+}
+
+/* Asegurar que no haya efectos de scroll en la navbar */
+body {
+    scroll-behavior: smooth;
+}
+
+/* Prevenir cualquier transformación en la navbar */
+.floating-nav,
+.floating-nav *,
+.floating-nav .nav-container,
+.floating-nav .nav-menu,
+.floating-nav .nav-link {
+    transform: none !important;
+    transition: none !important;
 }
 
 .nav-container {
