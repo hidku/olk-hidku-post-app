@@ -137,29 +137,7 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
     
-    // Efecto parallax suave en el scroll
-    let ticking = false;
-    
-    function updateParallax() {
-        const scrolled = window.pageYOffset;
-        const parallax = document.querySelector('.floating-nav');
-        
-        if (parallax) {
-            const speed = scrolled * 0.1;
-            parallax.style.transform = `translateX(-50%) translateY(${speed}px)`;
-        }
-        
-        ticking = false;
-    }
-    
-    function requestTick() {
-        if (!ticking) {
-            requestAnimationFrame(updateParallax);
-            ticking = true;
-        }
-    }
-    
-    window.addEventListener('scroll', requestTick);
+    // Efecto parallax removido para mantener navegación fija
     
     // Efecto hover mejorado para enlaces de navegación
     document.querySelectorAll('.nav-link').forEach(link => {
@@ -193,21 +171,30 @@ document.addEventListener('DOMContentLoaded', function() {
     // Mantener navegación fija al hacer scroll
     const nav = document.querySelector('.floating-nav');
     
-    window.addEventListener('scroll', function() {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    if (nav) {
+        // Asegurar que la navegación esté siempre fija
+        nav.style.position = 'fixed';
+        nav.style.top = '20px';
+        nav.style.left = '50%';
+        nav.style.transform = 'translateX(-50%)';
+        nav.style.zIndex = '1000';
         
-        // Mantener la navegación siempre visible
-        nav.style.transform = 'translateX(-50%) translateY(0)';
-        
-        // Ajustar opacidad basada en el scroll
-        if (scrollTop > 50) {
-            nav.style.background = 'rgba(20, 20, 20, 0.9)';
-            nav.style.backdropFilter = 'blur(20px)';
-        } else {
-            nav.style.background = 'rgba(20, 20, 20, 0.8)';
-            nav.style.backdropFilter = 'blur(15px)';
-        }
-    });
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // Mantener la navegación siempre visible y fija
+            nav.style.transform = 'translateX(-50%) translateY(0)';
+            
+            // Ajustar opacidad basada en el scroll
+            if (scrollTop > 50) {
+                nav.style.background = 'rgba(20, 20, 20, 0.9)';
+                nav.style.backdropFilter = 'blur(20px)';
+            } else {
+                nav.style.background = 'rgba(20, 20, 20, 0.8)';
+                nav.style.backdropFilter = 'blur(15px)';
+            }
+        });
+    }
     
     // Efecto de typing para el título principal
     const titleElement = document.querySelector('.home-section h1');
