@@ -179,10 +179,10 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(typeWriter, 500);
     }
     
-    // Forzar navbar completamente fija y centrada en la parte superior
+    // Navbar mejorada con animaciones y efectos
     const navbar = document.querySelector('.floating-nav');
     if (navbar) {
-        // Resetear cualquier transformación y centrar en la parte superior
+        // Configuración inicial mejorada
         navbar.style.position = 'fixed';
         navbar.style.top = '0';
         navbar.style.left = '50%';
@@ -193,25 +193,118 @@ document.addEventListener('DOMContentLoaded', function() {
         navbar.style.alignItems = 'center';
         navbar.style.width = '100%';
         
-        // Prevenir cualquier cambio en scroll y mantener centrado superior
-        window.addEventListener('scroll', function() {
-            navbar.style.position = 'fixed';
-            navbar.style.top = '0';
-            navbar.style.left = '50%';
-            navbar.style.transform = 'translateX(-50%)';
-            navbar.style.display = 'flex';
-            navbar.style.justifyContent = 'center';
-            navbar.style.alignItems = 'center';
-            navbar.style.width = '100%';
+        // Efecto de scroll suave con parallax sutil
+        let lastScrollY = window.scrollY;
+        let ticking = false;
+        
+        function updateNavbar() {
+            const scrollY = window.scrollY;
+            const scrollDelta = scrollY - lastScrollY;
+            
+            // Efecto parallax sutil en el background
+            if (scrollY > 50) {
+                navbar.style.background = `linear-gradient(135deg, 
+                    rgba(20, 20, 20, 0.98) 0%, 
+                    rgba(30, 30, 30, 0.95) 50%, 
+                    rgba(20, 20, 20, 0.98) 100%)`;
+                navbar.style.boxShadow = `
+                    0 15px 50px rgba(0, 0, 0, 0.5),
+                    0 0 0 1px rgba(14, 165, 233, 0.3),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.15)`;
+            } else {
+                navbar.style.background = `linear-gradient(135deg, 
+                    rgba(20, 20, 20, 0.95) 0%, 
+                    rgba(30, 30, 30, 0.9) 50%, 
+                    rgba(20, 20, 20, 0.95) 100%)`;
+                navbar.style.boxShadow = `
+                    0 10px 40px rgba(0, 0, 0, 0.4),
+                    0 0 0 1px rgba(14, 165, 233, 0.1),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.1)`;
+            }
+            
+            lastScrollY = scrollY;
+            ticking = false;
+        }
+        
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(updateNavbar);
+                ticking = true;
+            }
+        }
+        
+        // Event listeners mejorados
+        window.addEventListener('scroll', requestTick);
+        
+        // Efecto hover mejorado
+        navbar.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateX(-50%) translateY(2px)';
+            this.style.boxShadow = `
+                0 20px 60px rgba(0, 0, 0, 0.6),
+                0 0 0 1px rgba(14, 165, 233, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2)`;
         });
         
-        // Asegurar centrado en resize
+        navbar.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateX(-50%) translateY(0)';
+            this.style.boxShadow = `
+                0 10px 40px rgba(0, 0, 0, 0.4),
+                0 0 0 1px rgba(14, 165, 233, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1)`;
+        });
+        
+        // Asegurar centrado en resize con animación
         window.addEventListener('resize', function() {
             navbar.style.left = '50%';
             navbar.style.transform = 'translateX(-50%)';
             navbar.style.width = '100%';
         });
+        
+        // Animación de entrada
+        navbar.style.opacity = '0';
+        navbar.style.transform = 'translateX(-50%) translateY(-20px)';
+        
+        setTimeout(() => {
+            navbar.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+            navbar.style.opacity = '1';
+            navbar.style.transform = 'translateX(-50%) translateY(0)';
+        }, 100);
     }
+    
+    // Mejorar interacciones de los enlaces
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-3px) scale(1.05)';
+        });
+        
+        link.addEventListener('mouseleave', function() {
+            if (!this.classList.contains('active')) {
+                this.style.transform = 'translateY(0) scale(1)';
+            }
+        });
+    });
+    
+    // Mejorar dropdown
+    const dropdowns = document.querySelectorAll('.nav-dropdown');
+    dropdowns.forEach(dropdown => {
+        const toggle = dropdown.querySelector('.dropdown-toggle');
+        const menu = dropdown.querySelector('.dropdown-menu');
+        
+        if (toggle && menu) {
+            dropdown.addEventListener('mouseenter', function() {
+                menu.style.opacity = '1';
+                menu.style.visibility = 'visible';
+                menu.style.transform = 'translateX(-50%) translateY(0)';
+            });
+            
+            dropdown.addEventListener('mouseleave', function() {
+                menu.style.opacity = '0';
+                menu.style.visibility = 'hidden';
+                menu.style.transform = 'translateX(-50%) translateY(-10px)';
+            });
+        }
+    });
     
     console.log('🚀 Hidku Portfolio - JavaScript cargado correctamente');
 });
