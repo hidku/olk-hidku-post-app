@@ -137,9 +137,40 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
     
-    // Efecto parallax removido para mantener navbar fija
+    // Efecto parallax suave en el scroll
+    let ticking = false;
     
-    // Efectos hover removidos para mantener navbar fija
+    function updateParallax() {
+        const scrolled = window.pageYOffset;
+        const parallax = document.querySelector('.floating-nav');
+        
+        if (parallax) {
+            const speed = scrolled * 0.1;
+            parallax.style.transform = `translateX(-50%) translateY(${speed}px)`;
+        }
+        
+        ticking = false;
+    }
+    
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(updateParallax);
+            ticking = true;
+        }
+    }
+    
+    window.addEventListener('scroll', requestTick);
+    
+    // Efecto hover mejorado para enlaces de navegación
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-2px) scale(1.05)';
+        });
+        
+        link.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
+    });
     
     // Cargar imágenes con lazy loading
     if ('IntersectionObserver' in window) {
@@ -159,7 +190,23 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Navegación fija - sin efectos de scroll
+    // Mostrar/ocultar navegación en scroll
+    let lastScrollTop = 0;
+    const nav = document.querySelector('.floating-nav');
+    
+    window.addEventListener('scroll', function() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (scrollTop > lastScrollTop && scrollTop > 100) {
+            // Scrolling down
+            nav.style.transform = 'translateX(-50%) translateY(-100px)';
+        } else {
+            // Scrolling up
+            nav.style.transform = 'translateX(-50%) translateY(0)';
+        }
+        
+        lastScrollTop = scrollTop;
+    });
     
     // Efecto de typing para el título principal
     const titleElement = document.querySelector('.home-section h1');
@@ -178,133 +225,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         setTimeout(typeWriter, 500);
     }
-    
-    // Navbar mejorada con animaciones y efectos
-    const navbar = document.querySelector('.floating-nav');
-    if (navbar) {
-        // Configuración inicial mejorada
-        navbar.style.position = 'fixed';
-        navbar.style.top = '0';
-        navbar.style.left = '50%';
-        navbar.style.transform = 'translateX(-50%)';
-        navbar.style.zIndex = '9999';
-        navbar.style.display = 'flex';
-        navbar.style.justifyContent = 'center';
-        navbar.style.alignItems = 'center';
-        navbar.style.width = '100%';
-        
-        // Efecto de scroll suave con parallax sutil
-        let lastScrollY = window.scrollY;
-        let ticking = false;
-        
-        function updateNavbar() {
-            const scrollY = window.scrollY;
-            const scrollDelta = scrollY - lastScrollY;
-            
-            // Efecto parallax sutil en el background
-            if (scrollY > 50) {
-                navbar.style.background = `linear-gradient(135deg, 
-                    rgba(20, 20, 20, 0.98) 0%, 
-                    rgba(30, 30, 30, 0.95) 50%, 
-                    rgba(20, 20, 20, 0.98) 100%)`;
-                navbar.style.boxShadow = `
-                    0 15px 50px rgba(0, 0, 0, 0.5),
-                    0 0 0 1px rgba(14, 165, 233, 0.3),
-                    inset 0 1px 0 rgba(255, 255, 255, 0.15)`;
-            } else {
-                navbar.style.background = `linear-gradient(135deg, 
-                    rgba(20, 20, 20, 0.95) 0%, 
-                    rgba(30, 30, 30, 0.9) 50%, 
-                    rgba(20, 20, 20, 0.95) 100%)`;
-                navbar.style.boxShadow = `
-                    0 10px 40px rgba(0, 0, 0, 0.4),
-                    0 0 0 1px rgba(14, 165, 233, 0.1),
-                    inset 0 1px 0 rgba(255, 255, 255, 0.1)`;
-            }
-            
-            lastScrollY = scrollY;
-            ticking = false;
-        }
-        
-        function requestTick() {
-            if (!ticking) {
-                requestAnimationFrame(updateNavbar);
-                ticking = true;
-            }
-        }
-        
-        // Event listeners mejorados
-        window.addEventListener('scroll', requestTick);
-        
-        // Efecto hover mejorado
-        navbar.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateX(-50%) translateY(2px)';
-            this.style.boxShadow = `
-                0 20px 60px rgba(0, 0, 0, 0.6),
-                0 0 0 1px rgba(14, 165, 233, 0.4),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2)`;
-        });
-        
-        navbar.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateX(-50%) translateY(0)';
-            this.style.boxShadow = `
-                0 10px 40px rgba(0, 0, 0, 0.4),
-                0 0 0 1px rgba(14, 165, 233, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1)`;
-        });
-        
-        // Asegurar centrado en resize con animación
-        window.addEventListener('resize', function() {
-            navbar.style.left = '50%';
-            navbar.style.transform = 'translateX(-50%)';
-            navbar.style.width = '100%';
-        });
-        
-        // Animación de entrada
-        navbar.style.opacity = '0';
-        navbar.style.transform = 'translateX(-50%) translateY(-20px)';
-        
-        setTimeout(() => {
-            navbar.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
-            navbar.style.opacity = '1';
-            navbar.style.transform = 'translateX(-50%) translateY(0)';
-        }, 100);
-    }
-    
-    // Mejorar interacciones de los enlaces
-    const navLinks = document.querySelectorAll('.nav-link');
-    navLinks.forEach(link => {
-        link.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-3px) scale(1.05)';
-        });
-        
-        link.addEventListener('mouseleave', function() {
-            if (!this.classList.contains('active')) {
-                this.style.transform = 'translateY(0) scale(1)';
-            }
-        });
-    });
-    
-    // Mejorar dropdown
-    const dropdowns = document.querySelectorAll('.nav-dropdown');
-    dropdowns.forEach(dropdown => {
-        const toggle = dropdown.querySelector('.dropdown-toggle');
-        const menu = dropdown.querySelector('.dropdown-menu');
-        
-        if (toggle && menu) {
-            dropdown.addEventListener('mouseenter', function() {
-                menu.style.opacity = '1';
-                menu.style.visibility = 'visible';
-                menu.style.transform = 'translateX(-50%) translateY(0)';
-            });
-            
-            dropdown.addEventListener('mouseleave', function() {
-                menu.style.opacity = '0';
-                menu.style.visibility = 'hidden';
-                menu.style.transform = 'translateX(-50%) translateY(-10px)';
-            });
-        }
-    });
     
     console.log('🚀 Hidku Portfolio - JavaScript cargado correctamente');
 });
