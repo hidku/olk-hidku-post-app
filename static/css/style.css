@@ -1402,10 +1402,18 @@ body {
     
     .nav-link {
         width: 100%;
-        justify-content: flex-start;
+        justify-content: center;
+        align-items: center;
         padding: 15px 20px;
         border-radius: 15px;
         font-size: 1rem;
+        position: relative;
+    }
+    
+    .nav-link .nav-icon {
+        position: absolute;
+        left: 20px;
+        font-size: 1.2rem;
     }
     
     .nav-dropdown {
@@ -1414,26 +1422,44 @@ body {
     
     .dropdown-toggle {
         width: 100%;
-        justify-content: space-between;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+    
+    .dropdown-toggle .nav-icon {
+        position: absolute;
+        left: 20px;
+        font-size: 1.2rem;
+    }
+    
+    .dropdown-toggle .dropdown-arrow {
+        position: absolute;
+        right: 20px;
+        font-size: 0.9rem;
     }
     
     .dropdown-menu {
         position: static;
-        opacity: 1;
-        visibility: visible;
+        opacity: 0;
+        visibility: hidden;
         transform: none;
-        margin-top: 10px;
+        margin-top: 0;
         border-radius: 15px;
         max-height: 0;
         overflow: hidden;
-        transition: all 0.3s ease;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         box-shadow: none;
         border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(15, 15, 15, 0.95);
     }
     
     .nav-dropdown.active .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
         max-height: 500px;
         padding: 15px 0;
+        margin-top: 10px;
     }
     
     .nav-dropdown.active .dropdown-arrow {
@@ -1443,6 +1469,15 @@ body {
     .dropdown-item {
         padding: 12px 25px;
         font-size: 0.95rem;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+    
+    .dropdown-item .nav-icon {
+        position: absolute;
+        left: 25px;
+        font-size: 1.1rem;
     }
     
     .playbook-menu {
@@ -1458,6 +1493,15 @@ body {
         border-radius: 12px;
         margin: 0 15px;
         font-size: 1rem;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+    
+    .playbook-menu .dropdown-item .nav-icon {
+        position: absolute;
+        left: 25px;
+        font-size: 1.2rem;
     }
     
     .playbook-center {
@@ -1539,17 +1583,53 @@ body {
     .nav-link {
         padding: 12px 15px;
         font-size: 0.95rem;
+        justify-content: center;
+        position: relative;
+    }
+    
+    .nav-link .nav-icon {
+        position: absolute;
+        left: 15px;
+        font-size: 1.1rem;
+    }
+    
+    .dropdown-toggle .nav-icon {
+        position: absolute;
+        left: 15px;
+        font-size: 1.1rem;
+    }
+    
+    .dropdown-toggle .dropdown-arrow {
+        position: absolute;
+        right: 15px;
+        font-size: 0.8rem;
     }
     
     .dropdown-item {
         padding: 10px 20px;
         font-size: 0.9rem;
+        justify-content: center;
+        position: relative;
+    }
+    
+    .dropdown-item .nav-icon {
+        position: absolute;
+        left: 20px;
+        font-size: 1rem;
     }
     
     .playbook-menu .dropdown-item {
         padding: 12px 20px;
         margin: 0 10px;
         font-size: 0.95rem;
+        justify-content: center;
+        position: relative;
+    }
+    
+    .playbook-menu .dropdown-item .nav-icon {
+        position: absolute;
+        left: 20px;
+        font-size: 1.1rem;
     }
     
     .home-section h1 {
