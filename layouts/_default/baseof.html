@@ -14,6 +14,14 @@
             <div class="nav-brand">
                 <a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
             </div>
+            
+            <!-- Mobile menu button -->
+            <button class="mobile-menu-btn" aria-label="Toggle mobile menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            
             <div class="nav-menu">
                 <a href="{{ .Site.BaseURL }}" class="nav-link {{ if eq .RelPermalink "/" }}active{{ end }}">
                     <span class="nav-icon">🏠</span>
