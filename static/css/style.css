@@ -1315,36 +1315,154 @@ body {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* Botón hamburguesa para móviles */
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+    transition: all 0.3s ease;
+}
+
+.hamburger-line {
+    width: 25px;
+    height: 3px;
+    background: #ffffff;
+    margin: 3px 0;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+.mobile-menu-toggle.active .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.mobile-menu-toggle.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-toggle.active .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .floating-nav {
-        top: 10px;
-        left: 10px;
-        right: 10px;
+        top: 15px;
+        left: 15px;
+        right: 15px;
         transform: none;
         border-radius: 20px;
+        padding: 12px 20px;
     }
     
     .nav-container {
-        flex-direction: column;
-        gap: 10px;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+    }
+    
+    .mobile-menu-toggle {
+        display: flex;
     }
     
     .nav-menu {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
+        position: absolute;
+        top: 100%;
+        left: -20px;
+        right: -20px;
+        background: rgba(20, 20, 20, 0.98);
+        backdrop-filter: blur(15px);
+        border: 1px solid rgba(59, 130, 246, 0.3);
+        border-radius: 20px;
+        margin-top: 10px;
+        padding: 20px;
+        flex-direction: column;
+        gap: 15px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-20px);
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+    }
+    
+    .nav-menu.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    
+    .nav-link {
+        width: 100%;
+        justify-content: flex-start;
+        padding: 15px 20px;
+        border-radius: 15px;
+        font-size: 1rem;
+    }
+    
+    .nav-dropdown {
+        width: 100%;
+    }
+    
+    .dropdown-toggle {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .dropdown-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        margin-top: 10px;
+        border-radius: 15px;
+        max-height: 0;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        box-shadow: none;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .nav-dropdown.active .dropdown-menu {
+        max-height: 500px;
+        padding: 15px 0;
+    }
+    
+    .nav-dropdown.active .dropdown-arrow {
+        transform: rotate(180deg);
+    }
+    
+    .dropdown-item {
+        padding: 12px 25px;
+        font-size: 0.95rem;
     }
     
     .playbook-menu {
-        min-width: 180px;
-        grid-template-columns: 1fr;
-        gap: 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px 0;
+        min-width: auto;
+    }
+    
+    .playbook-menu .dropdown-item {
+        padding: 15px 25px;
+        border-radius: 12px;
+        margin: 0 15px;
+        font-size: 1rem;
     }
     
     .playbook-center {
-        grid-column: 1;
-        justify-self: stretch;
+        order: -1;
+        margin-bottom: 10px;
     }
     
     /* Home responsive */
@@ -1391,9 +1509,47 @@ body {
 }
 
 @media (max-width: 480px) {
+    .floating-nav {
+        top: 10px;
+        left: 10px;
+        right: 10px;
+        padding: 10px 15px;
+    }
+    
+    .nav-brand a {
+        font-size: 1.1rem;
+    }
+    
+    .mobile-menu-toggle {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .hamburger-line {
+        width: 20px;
+        height: 2px;
+    }
+    
+    .nav-menu {
+        left: -15px;
+        right: -15px;
+        padding: 15px;
+    }
+    
     .nav-link {
-        padding: 6px 12px;
+        padding: 12px 15px;
+        font-size: 0.95rem;
+    }
+    
+    .dropdown-item {
+        padding: 10px 20px;
         font-size: 0.9rem;
+    }
+    
+    .playbook-menu .dropdown-item {
+        padding: 12px 20px;
+        margin: 0 10px;
+        font-size: 0.95rem;
     }
     
     .home-section h1 {
