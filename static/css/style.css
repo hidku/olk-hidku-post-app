@@ -113,8 +113,17 @@ body {
     transition: transform 0.3s ease;
 }
 
-.nav-dropdown:hover .dropdown-arrow {
-    transform: rotate(180deg);
+/* Hover solo para desktop */
+@media (min-width: 769px) {
+    .nav-dropdown:hover .dropdown-arrow {
+        transform: rotate(180deg);
+    }
+    
+    .nav-dropdown:hover .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
 }
 
 .dropdown-menu {
@@ -132,12 +141,6 @@ body {
     transform: translateY(-10px);
     transition: all 0.3s ease;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-}
-
-.nav-dropdown:hover .dropdown-menu {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
 }
 
 .dropdown-item {
@@ -1354,6 +1357,17 @@ body {
 
 /* Responsive */
 @media (max-width: 768px) {
+    /* Deshabilitar hover en móvil para dropdowns */
+    .nav-dropdown:hover .dropdown-menu {
+        opacity: 0 !important;
+        visibility: hidden !important;
+        transform: translateY(-10px) !important;
+    }
+    
+    .nav-dropdown:hover .dropdown-arrow {
+        transform: none !important;
+    }
+    
     .floating-nav {
         top: 15px;
         left: 15px;
@@ -1553,6 +1567,17 @@ body {
 }
 
 @media (max-width: 480px) {
+    /* Asegurar que hover esté deshabilitado en pantallas pequeñas */
+    .nav-dropdown:hover .dropdown-menu {
+        opacity: 0 !important;
+        visibility: hidden !important;
+        transform: translateY(-10px) !important;
+    }
+    
+    .nav-dropdown:hover .dropdown-arrow {
+        transform: none !important;
+    }
+    
     .floating-nav {
         top: 10px;
         left: 10px;
